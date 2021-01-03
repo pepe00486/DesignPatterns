@@ -1,0 +1,43 @@
+@startuml
+title Strategy Pattern
+
+interface ABehaviour {
+A()
+}
+
+class ConcreteABehaviour {
+A()
+}
+
+class OtherConcreteABehaviour {
+   A()
+}
+
+
+interface BBehaviour {
+B()
+}
+
+class ConcreteBBehaviour {
+B()
+}
+
+class OtherConcreteBBehaviour {
+B()
+}
+
+class Client {
+-ABehaviour
+-BBehaviour
+}
+
+ConcreteABehaviour ..|> ABehaviour
+OtherConcreteABehaviour ..|> ABehaviour
+
+ConcreteBBehaviour ..|> BBehaviour
+OtherConcreteBBehaviour ..|> BBehaviour
+
+Client --o ABehaviour
+Client --o BBehaviour
+
+@enduml

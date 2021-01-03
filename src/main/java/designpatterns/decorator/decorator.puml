@@ -1,0 +1,33 @@
+@startuml
+title Decorator Pattern
+
+interface Component{
+methodA()
+methodB()
+}
+
+class ConcreteComponent {
+methodA()
+methodB()
+}
+
+interface Decorator{
+-Component
+methodA()
+methodB()
+}
+class DecoratorA {
+methodA()
+methodB()
+}
+
+class DecoratorB {
+methodA()
+methodB()
+}
+
+ConcreteComponent ..|> Component
+DecoratorA ..|> Decorator
+Decorator --o Component
+DecoratorB ..|> Decorator
+@enduml

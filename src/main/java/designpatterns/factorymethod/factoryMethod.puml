@@ -1,0 +1,25 @@
+@startuml
+title Factory Method Pattern
+
+interface Product{
+}
+class ConcreteProductA{
+
+}
+class ConcreteProductB{
+
+}
+
+class Factory{
++factoryMethod() : Product
+}
+
+class Client{
+}
+
+ConcreteProductA ..|> Product
+ConcreteProductB ..|> Product
+Client --> Factory
+Client --> Product
+Factory --> Product
+@enduml

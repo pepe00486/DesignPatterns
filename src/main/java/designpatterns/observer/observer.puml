@@ -1,0 +1,33 @@
+@startuml
+title Observer Pattern
+
+interface Observer{
+update()
+}
+
+interface Observable{
+add(Observer): void
+remove(Observer): void
+notify(): void
+}
+
+class ConcreteObserverA{
++update()
+}
+
+class ConcreteObserverB{
++update()
+}
+
+class ConcreteObservable{
++List<Observer>
++add(Observer): void
++remove(Observer): void
++notify(): void
+}
+
+ConcreteObserverA ..|> Observer
+ConcreteObserverB ..|> Observer
+ConcreteObservable ..|> Observable
+ConcreteObservable --o "0..*" Observer
+@enduml
