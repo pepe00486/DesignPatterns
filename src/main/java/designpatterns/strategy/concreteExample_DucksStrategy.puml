@@ -1,0 +1,46 @@
+@startuml
+title Strategy Pattern
+
+interface EatingableBehaviour {
+Eat()
+}
+
+class CommonEatingBehaviour {
+Eat()
+}
+
+class NoEatingBehaviour {
+   Eat()
+}
+class WildEatingBehaviour {
+Eat()
+}
+
+interface FlyiableBehaviour {
+Fly()
+}
+
+class CommonFlyingBehaviour {
+Fly()
+}
+
+class NoFlyingBehaviour {
+Fly()
+}
+
+class Client {
+-EatingableBehaviour
+-FlyiableBehaviour
+}
+
+CommonEatingBehaviour ..|> EatingableBehaviour
+NoEatingBehaviour ..|> EatingableBehaviour
+WildEatingBehaviour ..|> EatingableBehaviour
+
+CommonFlyingBehaviour ..|> FlyiableBehaviour
+NoFlyingBehaviour ..|> FlyiableBehaviour
+
+Duck --o EatingableBehaviour
+Duck --o FlyiableBehaviour
+
+@enduml
