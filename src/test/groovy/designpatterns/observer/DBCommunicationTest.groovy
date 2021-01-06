@@ -3,10 +3,10 @@ package designpatterns.observer
 import spock.lang.Specification
 
 class DBCommunicationTest extends Specification {
-    DBCommunicationObservable dBCommunation;
+    DBCommunication dBCommunation;
 
     def setup() {
-        dBCommunation = new DBCommunicationObservable()
+        dBCommunation = new DBCommunication()
     }
 
     def 'DBCommunication should exist'() {
@@ -16,7 +16,7 @@ class DBCommunicationTest extends Specification {
 
     def 'DBCommunication should have list of observators that i can add'() {
         when: 'DBOserver is added'
-        dBCommunation.add(new DBObservator())
+        dBCommunation.add(new DBClient())
 
         then: 'dBCommunation.observatorsList is not empty'
         !dBCommunation.observatorsList.isEmpty()
@@ -27,7 +27,7 @@ class DBCommunicationTest extends Specification {
 
     def 'DBCommunication should have list of observators that i can remove'() {
         given: 'DBCommunation.observatorsList is not empty'
-        def observator = new DBObservator()
+        def observator = new DBClient()
         dBCommunation.observatorsList.add(observator)
 
         when: 'Observator is removed'
@@ -39,8 +39,8 @@ class DBCommunicationTest extends Specification {
 
     def 'DBCommunication.observatorsList should have one element after i add 2 and remove 1'() {
         given: 'DBCommunation.observatorsList has 2 elements'
-        def observator_1 = new DBObservator()
-        def observator_2 = new DBObservator()
+        def observator_1 = new DBClient()
+        def observator_2 = new DBClient()
         dBCommunation.add(observator_1)
         dBCommunation.add(observator_2)
 
@@ -56,11 +56,11 @@ class DBCommunicationTest extends Specification {
 
     def 'DBCommunication.observatorsList should have 3 element after i add 5 and remove 2'() {
         given: 'DBCommunation.observatorsList has 2 elements'
-        def observator_1 = new DBObservator()
-        def observator_2 = new DBObservator()
-        def observator_3 = new DBObservator()
-        def observator_4 = new DBObservator()
-        def observator_5 = new DBObservator()
+        def observator_1 = new DBClient()
+        def observator_2 = new DBClient()
+        def observator_3 = new DBClient()
+        def observator_4 = new DBClient()
+        def observator_5 = new DBClient()
         dBCommunation.add(observator_1)
         dBCommunation.add(observator_2)
         dBCommunation.add(observator_3)
@@ -88,11 +88,11 @@ class DBCommunicationTest extends Specification {
 
     def 'DBCommunication should Notify all observers on Notify call'() {
         given:'At least one observator is added'
-        def observator_1 = Mock(Observator)
+        def observator_1 = Mock(Client)
         dBCommunation.add(observator_1)
 
         when: 'Notify is called'
-        dBCommunation.notifyObservators()
+        dBCommunation.notifyClients()
 
         then: 'Observator update is called'
         1 * observator_1.update(_)

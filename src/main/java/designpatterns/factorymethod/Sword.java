@@ -1,4 +1,4 @@
 package designpatterns.factorymethod;
 
-public class Sword implements EqItem{
+public class Sword implements EqItem {
 }

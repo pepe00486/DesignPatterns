@@ -5,10 +5,10 @@ import spock.lang.Specification
 class IntegrationTest extends Specification {
     def 'Observators usernames are updated when DBMock username changes'() {
         setup: 'Observators exist'
-        def dbCommunication = new DBCommunicationObservable()
+        def dbCommunication = new DBCommunication()
 
         for (i in 0..< 10) {
-            dbCommunication.add(DBObservator.buildDBObserver(dbCommunication))
+            dbCommunication.add(DBClient.buildDBClient(dbCommunication))
         }
 
         def dbMock = new DBMock(dbCommunication)

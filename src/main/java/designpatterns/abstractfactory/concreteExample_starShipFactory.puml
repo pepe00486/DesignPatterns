@@ -1,0 +1,82 @@
+@startuml
+title Star Ship Factory (AbstractFactory pattern)
+
+
+interface ShipPart{
+}
+
+class AlienShipBody{
+
+}
+class AlienShipEngine{
+
+}
+class AlienShipWeapon{
+
+}
+
+class IrishArmyShipBody{
+
+}
+class IrishArmyShipEngine{
+
+}
+class IrishArmyShipWeapon{
+
+}
+
+interface StarShipFactory {
++createWeapon() : ShipPart
++createBody() : ShipPart
++createEngine() : ShipPart
+}
+
+class IrishArmyShipFactory{
++createWeapon() : ShipPart
++createBody() : ShipPart
++createEngine() : ShipPart
+}
+
+class AlienShipFactory{
++createWeapon() : ShipPart
++createBody() : ShipPart
++createEngine() : ShipPart
+}
+
+interface StarShip {
+ + callOutSpecs() : String
+}
+
+class PrettyStarShip {
++callOutSpecs() : String
+}
+
+class StarShipSpawner{
+}
+
+PrettyStarShip ..|> StarShip
+PrettyStarShip --> ShipPart
+
+AlienShipBody ..|> ShipPart
+AlienShipEngine ..|> ShipPart
+AlienShipWeapon ..|> ShipPart
+IrishArmyShipBody ..|> ShipPart
+IrishArmyShipEngine ..|> ShipPart
+IrishArmyShipWeapon ..|> ShipPart
+
+IrishArmyShipFactory ..|> StarShipFactory
+AlienShipFactory ..|> StarShipFactory
+
+StarShipSpawner --> StarShipFactory
+StarShipSpawner --> StarShip
+
+IrishArmyShipFactory --> ShipPart
+AlienShipFactory --> ShipPart
+
+ShipPart -down[hidden]- IrishArmyShipFactory
+ShipPart -down[hidden]-  AlienShipFactory
+AlienShipFactory -down[hidden]- StarShipFactory
+StarShipSpawner -down[hidden]- StarShipFactory
+
+
+@enduml

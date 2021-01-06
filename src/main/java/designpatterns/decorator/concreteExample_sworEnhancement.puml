@@ -1,0 +1,28 @@
+@startuml
+title Sword Enchancement (Decorator Pattern)
+
+interface Weapon{
+Attack()
+}
+
+class Sword {
+Attack()
+}
+
+abstract SwordEnhancement{
+-Component
+Attack()
+}
+class FireSwordEnhancement {
+Attack()
+}
+
+class FrostSwordEnhancement {
+Attack()
+}
+
+Sword ..|> Weapon
+FireSwordEnhancement ..|> SwordEnhancement
+SwordEnhancement --o Weapon
+FrostSwordEnhancement ..|> SwordEnhancement
+@enduml

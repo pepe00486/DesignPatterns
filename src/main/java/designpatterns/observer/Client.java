@@ -1,5 +1,5 @@
 package designpatterns.observer;
 
-public interface Observator {
+public interface Client {
     void update(String username);
 }

@@ -20,11 +20,11 @@ public class Duck {
     public Duck() {
     }
 
-    public String fly(){
+    public String fly() {
         return flyiableBehaviour.fly();
     }
 
-    public String eat(){
+    public String eat() {
         return eatingableBehaviour.eat();
     }
 }

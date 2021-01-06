@@ -1,0 +1,25 @@
+@startuml
+title Item Picker (Factory Method Pattern)
+
+interface EqItem{
+}
+class Food{
+
+}
+class Sword{
+
+}
+
+class ItemPicker{
++pickItem() : EqItem
+}
+
+class Client{
+}
+
+Food ..|> EqItem
+Sword ..|> EqItem
+Client --> ItemPicker
+Client --> EqItem
+ItemPicker --> EqItem
+@enduml

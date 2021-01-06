@@ -1,5 +1,5 @@
 package designpatterns.decorator;
 
-public interface SwordEnchancement {
-    String attack();
+public abstract class SwordEnchancement implements Weapon{
+    public Weapon weapon;
 }

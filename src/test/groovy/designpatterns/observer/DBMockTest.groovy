@@ -5,7 +5,7 @@ import spock.lang.Specification
 class DBMockTest extends Specification {
     DBMock dbMock;
     def setup(){
-        dbMock = new DBMock(Mock(Observable))
+        dbMock = new DBMock(Mock(DB))
     }
 
     def 'DBMock should exist'() {

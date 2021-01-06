@@ -1,0 +1,43 @@
+@startuml
+title Abstract Factory Pattern
+
+
+interface Product{
+}
+class ConcreteProductA{
+
+}
+class ConcreteProductB{
+
+}
+interface Factory {
+}
+
+class ConcreteFactoryOne{
++factoryMethodA() : Product
++factoryMethodB() : Product
+}
+class ConcreteFactoryTwo{
++factoryMethodA() : Product
++factoryMethodB() : Product
+}
+
+class Client{
+}
+
+ConcreteProductA ..|> Product
+ConcreteProductB ..|> Product
+
+ConcreteFactoryOne ..|> Factory
+ConcreteFactoryTwo ..|> Factory
+
+Client --> Factory
+Client --> Product
+
+ConcreteFactoryOne --> Product
+ConcreteFactoryTwo --> Product
+
+Factory -down[hidden]- Client
+
+
+@enduml

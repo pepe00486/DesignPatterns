@@ -2,10 +2,10 @@ package designpatterns.observer
 
 import spock.lang.Specification
 
-class DBObservatorTest extends Specification {
-    DBObservator dbObservator
+class DBClientTest extends Specification {
+    DBClient dbObservator
     def setup(){
-        dbObservator = new DBObservator()
+        dbObservator = new DBClient()
     }
 
     def 'When update method is called the username updates'(){
@@ -19,9 +19,9 @@ class DBObservatorTest extends Specification {
 
     def 'Observator should add itself to DBCommunication observable'(){
         given:
-        def dBCommunication = new DBCommunicationObservable()
+        def dBCommunication = new DBCommunication()
         when:'created'
-        def dbObservator = DBObservator.buildDBObserver(dBCommunication)
+        def dbObservator = DBClient.buildDBClient(dBCommunication)
         then:'it adds itself to dbCommunication'
         dBCommunication.observatorsList.contains(dbObservator)
     }

@@ -1,0 +1,37 @@
+@startuml
+title Observer Pattern
+
+interface Client{
+update() : void
+}
+
+interface DB{
+add(Client): void
+remove(Client): void
+notifyClients(): void
+}
+
+class DBClient{
+-username : String
++buildDBClient(DB : DB)
++update() : void
+}
+
+class DBCommunication{
++List<Client>
++add(Client): void
++remove(Client): void
++notifyClients(): void
+}
+
+class DBMock {
+-username : String
+-dbCommunication : DB
++getUsername() : String
++setUsername() : String
+}
+
+DBClient ..|> Client
+DBCommunication ..|> DB
+DBCommunication --o "0..*" Client
+@enduml

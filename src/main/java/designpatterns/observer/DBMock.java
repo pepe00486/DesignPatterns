@@ -2,9 +2,9 @@ package designpatterns.observer;
 
 public class DBMock {
     String username;
-    Observable dbCommunication;
+    DB dbCommunication;
 
-    public DBMock(Observable dbCommunication) {
+    public DBMock(DB dbCommunication) {
         this.dbCommunication = dbCommunication;
         username = "";
     }
@@ -15,6 +15,6 @@ public class DBMock {
 
     public void setUsername(String username) {
         this.username = username;
-        dbCommunication.notifyObservators(username);
+        dbCommunication.notifyClients(username);
     }
 }
