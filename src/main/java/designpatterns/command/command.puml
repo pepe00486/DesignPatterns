@@ -1,0 +1,29 @@
+@startuml
+title Command Pattern
+
+interface Command{
++execute() : void
++undo() : void
+}
+
+class AConcreteCommand{
++execute() : void
++undo() : void
+}
+
+class BConcreteCommand{
++execute() : void
++undo() : void
+}
+
+class Invoker {
+-aCommand : Command 1..*
+-commandsExecuted : List<Command>
++Invoker(aCommand : Command ..)
+}
+
+AConcreteCommand ..|> Command
+BConcreteCommand ..|> Command
+Invoker -up-> "0..*" Command
+
+@enduml

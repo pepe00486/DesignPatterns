@@ -5,18 +5,18 @@ import spock.lang.Specification
 class ItemPickerTest extends Specification {
     def 'Should pick item based on type'() {
         given:
-        ItemPicker itemPicker = new ItemPicker()
-        EqItem item
+            ItemPicker itemPicker = new ItemPicker()
+            EqItem item
         when: 'Should pick Food is picked'
-        item = itemPicker.pickItem('Food')
+            item = itemPicker.pickItem('Food')
 
         then: 'Item is food'
-        item in Food
+            item in Food
 
         when: 'Sword is picked'
-        item = itemPicker.pickItem('Sword')
+            item = itemPicker.pickItem('Sword')
 
         then: 'Item is sword'
-        item in Sword
+            item in Sword
     }
 }

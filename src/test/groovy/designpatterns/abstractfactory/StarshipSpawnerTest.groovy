@@ -25,6 +25,6 @@ class StarshipSpawnerTest extends Specification {
             starshipSpawner.getAlienStarShip() != null
 
         and: 'Irish army ship is instantiated'
-            starshipSpawner.getIrishArmyStarShip()  != null
+            starshipSpawner.getIrishArmyStarShip() != null
     }
 }

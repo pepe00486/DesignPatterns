@@ -32,9 +32,13 @@ class Client {
 }
 
 ConcreteABehaviour ..|> ABehaviour
+ABehaviour -down[hidden]- ConcreteABehaviour
+
 OtherConcreteABehaviour ..|> ABehaviour
 
 ConcreteBBehaviour ..|> BBehaviour
+BBehaviour -down[hidden]- ConcreteBBehaviour
+
 OtherConcreteBBehaviour ..|> BBehaviour
 
 Client --o ABehaviour

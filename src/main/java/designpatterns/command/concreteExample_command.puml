@@ -1,0 +1,109 @@
+@startuml
+title Command Pattern
+
+interface SoldierCommand{
+{abstract} +execute() : void
+{abstract} +undo() : void
+}
+class MoveCommand{
+-soldier : Soldier
+x : double
+y : double
++MoveCommand(soldier : Soldier)
++execute() : void
++undo() : void
+}
+
+class MoveForwardCommand{
+}
+
+class MoveBackCommand{
+}
+
+class MoveLeftCommand{
+}
+
+class MoveRightCommand{
+}
+
+class ShootCommand{
+-soldier : Soldier
++ShootCommand(soldier : Soldier)
++execute() : void
++undo() : void
+}
+
+interface Soldier{
+{abstract} +shoot() : void
+{abstract} +reload() : void
+{abstract} +move(x double, y double) : void
+}
+
+class RegularSoldier{
+~ammunition : int
+~positionX : double
+~positionY : double
+-speed : double
+-shotCost : int
+-shotSound : String
++shoot() : void
++reload() : void
++move(x double, y double) : void
+}
+
+class InfantrySoldier{
+{static} SHOT_COST : int
+{static} SHOT_SOUND : String
+{static} SPEED : double
++InfantrySoldier(ammunition : int, positionX : double, positionY : double)
+
+}
+
+class ArtillerySoldier{
+{static} SHOT_COST : int
+{static} SHOT_SOUND : String
+{static} SPEED : double
++ArtillerySoldier(ammunition : int, positionX : double, positionY : double)
+}
+
+class IntelligenceSoldier{
+{static} SHOT_COST : int
+{static} SHOT_SOUND : String
+{static} SPEED : double
++IntelligenceSoldier(ammunition : int, positionX : double, positionY : double)
+
+}
+
+class SoldierController {
+-commandsExecuted : List<SoldierCommand>
+-soldier : Soldier
+
++moveForward() : void
++moveBackward() : void
++moveLeft() : void
++moveRight() : void
++shoot() : void
++revertCommands(numberOfCommands : int) : void
+}
+
+MoveForwardCommand -down-|> MoveCommand
+MoveBackCommand -down-|> MoveCommand
+MoveLeftCommand -down-|> MoveCommand
+MoveRightCommand -down-|> MoveCommand
+MoveCommand .right.|> SoldierCommand
+ShootCommand .down.|> SoldierCommand
+
+MoveForwardCommand -down-o Soldier
+MoveBackCommand -down-o Soldier
+MoveLeftCommand -down-o Soldier
+MoveRightCommand -down-o Soldier
+ShootCommand -down-o Soldier
+
+SoldierController -down-o SoldierCommand
+
+RegularSoldier .down.|> Soldier
+InfantrySoldier -left-|> RegularSoldier
+IntelligenceSoldier -right-|> RegularSoldier
+ArtillerySoldier -down-|> RegularSoldier
+
+@enduml
